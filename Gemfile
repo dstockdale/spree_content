@@ -12,6 +12,6 @@ group :test do
   if RUBY_PLATFORM.downcase.include? "darwin"
     gem 'guard-rspec'
     gem 'rb-fsevent'
-    gem 'growl'
+    gem 'terminal-notifier-guard'
   end
 end
