@@ -1,4 +1,4 @@
 class Spree::Subject < ActiveRecord::Base
   translates :body
-  belongs_to :arrangement, foreign_key: :subject_id
+  has_many :arrangements, class_name: "Spree::Arrangement"
 end

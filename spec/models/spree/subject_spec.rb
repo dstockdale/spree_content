@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Spree::Subject, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'validation' do
+    it { is_expected.to have_many(:arrangements) }
+  end
 end
