@@ -14,4 +14,5 @@ group :test do
     gem 'rb-fsevent'
     gem 'terminal-notifier-guard'
   end
+  gem 'pry'
 end
