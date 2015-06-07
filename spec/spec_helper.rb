@@ -33,7 +33,7 @@ require 'spree/testing_support/factories'
 require 'spree/testing_support/url_helpers'
 
 # Requires factories defined in lib/spree_content/factories.rb
-require 'spree_content/factories'
+Dir[File.join(File.dirname(__FILE__), "factories/*.rb")].each {|f| require f }
 
 RSpec.configure do |config|
   
@@ -68,6 +68,6 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
-  # config.fail_fast = ENV['FAIL_FAST'] || false
-  # config.order = "random"
+  config.fail_fast = ENV['FAIL_FAST'] || false
+  config.order = "random"
 end
