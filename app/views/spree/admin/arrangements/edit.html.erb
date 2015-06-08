@@ -2,6 +2,10 @@
   <%= Spree.t :edit, scope: :contents %>
 <% end %>
 
+<% content_for :page_actions do %>
+  <%= link_to_with_icon 'translate', nil, admin_translations_path('arrangement', @arrangement.id), title: Spree.t(:'i18n.translations'), class: 'btn btn-sm btn-primary' %>
+<% end if can?(:translate, Spree::Arrangement) %>
+
 <%= form_for [:admin, @arrangement], :html => { :multipart => true } do |f| %>
   <%= render partial: 'form', :locals => { :f => f } %>
   <div class="form-actions" data-hook="buttons">

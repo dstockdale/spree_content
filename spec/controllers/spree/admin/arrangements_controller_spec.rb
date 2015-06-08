@@ -56,25 +56,15 @@ RSpec.describe Spree::Admin::ArrangementsController, :type => :controller do
 
     context 'with valid attributes' do
 
-      before :all do
-        @body = {"body"=>"It was a dark and stormy night and..."}
-      end
-
       it "saves the new arrangement in the database" do
         expect{
-          spree_post :create, arrangement: attributes_for(:arrangement, subject_attributes: @body)
+          spree_post :create, arrangement: attributes_for(:arrangement)
         }.to change(Spree::Arrangement, :count).by(1)
       end
 
-      it "redirects to arrangement#indx" do
-        spree_post :create, arrangement: attributes_for(:arrangement, subject_attributes: @body)
+      it "redirects to arrangement#index" do
+        spree_post :create, arrangement: attributes_for(:arrangement)
         expect(response).to redirect_to admin_arrangements_path
-      end
-
-      it "always has a subject" do
-        spree_post :create, arrangement: attributes_for(:arrangement, subject_attributes: @body)
-        arrangement = Spree::Arrangement.last
-        expect(arrangement.subject).to be_a(Spree::Subject)
       end
 
     end

@@ -9,12 +9,15 @@ class CreateSpreeArrangements < ActiveRecord::Migration
       t.string :description
       t.string :keywords
       t.string :title
+      t.text :body
       t.string :target
       t.boolean :visible, default: true
+      t.datetime :deleted_at
 
       t.timestamps null: false
     end
     add_index :spree_arrangements, :slug
     add_index :spree_arrangements, :ancestry
+    add_index :spree_arrangements, :deleted_at
   end
 end

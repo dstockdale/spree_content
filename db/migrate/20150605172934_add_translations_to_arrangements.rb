@@ -4,7 +4,8 @@ class AddTranslationsToArrangements < ActiveRecord::Migration
       slug: :string,
       description: :string,
       keywords: :string,
-      title: :string
+      title: :string,
+      body: :text
     }, { :migrate_data => true })
   end
 

@@ -6,11 +6,6 @@
   </label>
 <% end %>
 
-<%= f.field_container :localization, class: ['form-group'] do %>
-  <%= debug supported_locales_options %>
-  <%= select_arrangement_locale %>
-<% end %>
-
 <%= f.field_container :context, class: ['form-group'] do %>
   <%= f.label :context, Spree.t(:context, scope: :contents) %> <span class="required">*</span>
   <%= f.select :context, ["Page", "Partial"], {}, { class: "form-control" } %>
@@ -47,12 +42,10 @@
 <% end %>
 
 <%= f.field_container :subject_body, class: ['form-group'] do %>
-  <%= f.fields_for :subject, @arrangement.subject do |s| %>
-    <%= s.label :body, Spree.t(:body, scope: :contents) %> <span class="required">*</span>
-    <%= s.text_area :body, class: 'form-control body summernote' %>
-  <% end %>
+  <%= f.label :body, Spree.t(:body, scope: :contents) %> <span class="required">*</span>
+  <%= f.error_message_on :body %>
+  <%= f.text_area :body, class: 'form-control body summernote' %>
 <% end %>
-
 
 <script>
   <% inital_attr = @arrangement.context.nil? ? "Page" : "#{@arrangement.context}" %>

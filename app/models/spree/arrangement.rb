@@ -1,9 +1,7 @@
 class Spree::Arrangement < ActiveRecord::Base
-  belongs_to :subject, class_name: "Spree::Subject", foreign_key: :subject_id
-  accepts_nested_attributes_for :subject
   scope :visible, -> { where(visible: true) }
 
-  translates :slug, :description, :keywords, :title, fallbacks_for_empty_translations: true
+  translates :body, :slug, :description, :keywords, :title, fallbacks_for_empty_translations: true
   include SpreeI18n::Translatable
 
   translation_class.class_eval do
@@ -47,7 +45,4 @@ class Spree::Arrangement < ActiveRecord::Base
     slug.index('/') == 0 ? slug : '/' + slug
   end
 
-  def body
-    subject.body
-  end
 end
