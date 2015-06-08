@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_content'
-  s.version     = '3.0.0'
+  s.version     = '3.0.0-beta'
   s.summary     = 'Arranges content as pages and partials'
   s.description = 'Arranges content as pages and partials with summernote.js as a rich text editor'
   s.required_ruby_version = '>= 2.0.0'
@@ -11,8 +11,8 @@ Gem::Specification.new do |s|
   s.email     = 'dom.stockdale@gmail.com'
   s.homepage  = 'http://www.nonsens.us'
 
-  #s.files       = `git ls-files`.split("\n")
-  #s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
+  s.files       = `git ls-files`.split("\n")
+  s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_path = 'lib'
   s.requirements << 'none'
 

@@ -19,7 +19,7 @@
     <tbody>
     <% @arrangements.each do |arrangement| %>
       <tr <%== "style='color: red;'" if !arrangement.visible %> id="<%= spree_dom_id arrangement %>" data-hook="admin_arrangements_index_rows" class="<%= cycle('odd', 'even') %>">
-        <td><%= arrangement.title %> <a href="<%= arrangement.link %>" target="_blank"> <%= arrangement.slug %></a></td>
+        <td><%= arrangement.title %></td>
         <td class="actions actions-3 text-right" data-hook="admin_arrangement_index_row_actions">
           
           <%= link_to_with_icon('delete', nil, admin_arrangement_path(arrangement),
