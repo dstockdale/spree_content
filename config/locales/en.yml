@@ -3,6 +3,11 @@
 en:
   spree:
     controller:
-      controller_name: Content
+      controller_name: Contents
     contents:
       name: Content
+      create: Add Content
+      new: New Contents
+      edit: Editing Content
+      visible: Display?
+      context: Type of Content

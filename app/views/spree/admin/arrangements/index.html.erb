@@ -1,0 +1,30 @@
+<% content_for :page_title do %>
+  <%= Spree.t :name, scope: :contents %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to Spree.t(:create, scope: :contents), 
+        new_admin_arrangement_url, 
+        { :class => "btn-success", :icon => 'add', :id => 'admin_new_content' } %>
+<% end if can?(:create, Spree::Arrangement) %>
+
+<% if @arrangements.any? %>
+  <table class="table" id="listing_products">
+    <thead>
+      <tr data-hook="admin_products_index_headers">
+        <th>Title</th>
+        <th data-hook="admin_products_index_header_actions" class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @arrangements.each do |arrangement| %>
+      <tr <%== "style='color: red;'" if !arrangement.visible %> id="<%= spree_dom_id arrangement %>" data-hook="admin_arrangements_index_rows" class="<%= cycle('odd', 'even') %>">
+        <td><%= arrangement.title %> <%= arrangement.slug %></td>
+        <td class="actions actions-3 text-right" data-hook="admin_arrangement_index_row_actions">
+          <%= link_to('edit', edit_admin_arrangement_path(arrangement), class: 'edit') if can?(:edit, arrangement) %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>

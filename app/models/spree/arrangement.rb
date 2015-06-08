@@ -3,4 +3,6 @@ class Spree::Arrangement < ActiveRecord::Base
   belongs_to :subject, class_name: "Spree::Subject", foreign_key: :subject_id
 
   scope :visible, -> { where(visible: true) }
+
+  accepts_nested_attributes_for :subject
 end
