@@ -1,8 +1,6 @@
 class Spree::Admin::ArrangementsController < Spree::Admin::BaseController
-  before_action :find_arrangement, only: [:edit, :update, :destroy]
-  
-  helper SpreeContent::ArrangementsHelper
-  
+  before_action :set_arrangement, only: [:edit, :update, :destroy]
+    
   def index
     @arrangements = Spree::Arrangement.visible
   end
@@ -35,7 +33,7 @@ class Spree::Admin::ArrangementsController < Spree::Admin::BaseController
 
   private
 
-  def find_arrangement
+  def set_arrangement
     @arrangement = Spree::Arrangement.find(params[:id])
   end
 
