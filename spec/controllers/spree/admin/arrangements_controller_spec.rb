@@ -56,7 +56,7 @@ RSpec.describe Spree::Admin::ArrangementsController, :type => :controller do
 
     context 'with valid attributes' do
 
-      before :each do
+      before :all do
         @body = {"body"=>"It was a dark and stormy night and..."}
       end
 
@@ -94,6 +94,25 @@ RSpec.describe Spree::Admin::ArrangementsController, :type => :controller do
         expect(assigns(:arrangement)).to eq(@arrangement) 
       end
 
+    end
+
+  end
+
+  describe 'DELETE#destroy' do 
+    
+    before :each do
+      @arrangement = create(:arrangement) 
+    end
+    
+    it "deletes the arrangement" do 
+      expect{
+        spree_delete :destroy, id: @arrangement
+      }.to change(Spree::Arrangement,:count).by(-1)
+    end
+    
+    it "redirects to arrangements#index" do
+      spree_delete :destroy, id: @arrangement 
+      expect(response).to redirect_to admin_arrangements_url
     end
 
   end

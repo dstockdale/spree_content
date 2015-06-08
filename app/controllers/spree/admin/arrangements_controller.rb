@@ -28,6 +28,12 @@ class Spree::Admin::ArrangementsController < Spree::Admin::BaseController
     redirect_to admin_arrangements_path, success: "Updated #{@arrangement.context}"
   end
 
+  def destroy
+    @arrangement = Spree::Arrangement.find(params[:id])
+    @arrangement.destroy
+    redirect_to admin_arrangements_path, notice: "Removed the #{@arrangement.context}"
+  end
+
   private
 
   def permitted_resource_params
