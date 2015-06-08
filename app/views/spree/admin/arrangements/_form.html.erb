@@ -50,7 +50,7 @@
 
 
 <script>
-  <% inital_attr = @arrangement.context.nil? ? "Page" : "#{@arrangement.context.to_s.downcase}" %>
+  <% inital_attr = @arrangement.context.nil? ? "Page" : "#{@arrangement.context}" %>
   var initalAttr = "<%= inital_attr %>";
   var attrs = {
     Page: {
