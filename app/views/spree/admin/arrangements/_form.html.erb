@@ -6,6 +6,11 @@
   </label>
 <% end %>
 
+<%= f.field_container :localization, class: ['form-group'] do %>
+  <%= debug supported_locales_options %>
+  <%= select_arrangement_locale %>
+<% end %>
+
 <%= f.field_container :context, class: ['form-group'] do %>
   <%= f.label :context, Spree.t(:context, scope: :contents) %> <span class="required">*</span>
   <%= f.select :context, ["Page", "Partial"], {}, { class: "form-control" } %>

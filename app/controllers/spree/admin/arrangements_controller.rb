@@ -1,5 +1,7 @@
 class Spree::Admin::ArrangementsController < Spree::Admin::BaseController
   
+  helper SpreeContent::ArrangementsHelper
+  
   def index
     @arrangements = Spree::Arrangement.visible
   end
