@@ -19,6 +19,14 @@ bundle
 bundle exec rails g spree_content:install
 ```
 
+The catch-all route that serves up the static pages will not be added automatically so you need to add the following yourself and make sure it's the last entry in your routes file.
+
+config/routes.rb
+
+```ruby
+get '*path', :to => 'spree/static_contents#show', :as => 'static'
+```
+
 Testing
 -------
 
