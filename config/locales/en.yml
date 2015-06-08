@@ -13,3 +13,4 @@ en:
       context: Type of Content
       target: Where should it appear?
       body: Content
+      everything: "Pages & Partials"

@@ -5,4 +5,12 @@ class Spree::Arrangement < ActiveRecord::Base
   scope :visible, -> { where(visible: true) }
 
   accepts_nested_attributes_for :subject
+
+  def link
+    slug.index('/') == 0 ? slug : '/' + slug
+  end
+
+  def body
+    subject.body
+  end
 end

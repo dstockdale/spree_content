@@ -47,6 +47,8 @@ RSpec.configure do |config|
   config.include Spree::TestingSupport::UrlHelpers
   config.include Spree::TestingSupport::ControllerRequests, :type => :controller
   config.extend Spree::TestingSupport::AuthorizationHelpers::Controller, :type => :controller
+  config.include FrontendControllerHelpers::Controller, :type => :controller
+
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = false

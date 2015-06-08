@@ -12,15 +12,16 @@
   <table class="table" id="listing_products">
     <thead>
       <tr data-hook="admin_products_index_headers">
-        <th>Title</th>
+        <th><%= Spree.t(:everything, scope: :contents) %></th>
         <th data-hook="admin_products_index_header_actions" class="actions"></th>
       </tr>
     </thead>
     <tbody>
     <% @arrangements.each do |arrangement| %>
       <tr <%== "style='color: red;'" if !arrangement.visible %> id="<%= spree_dom_id arrangement %>" data-hook="admin_arrangements_index_rows" class="<%= cycle('odd', 'even') %>">
-        <td><%= arrangement.title %> <%= arrangement.slug %></td>
+        <td><a href="<%= arrangement.link %>" target="_blank"><%= arrangement.title %> <%= arrangement.slug %></a></td>
         <td class="actions actions-3 text-right" data-hook="admin_arrangement_index_row_actions">
+          <%= link_to('delete', admin_arrangement_path(arrangement), method: :delete, class: 'delete') if can?(:destroy, arrangement) %>
           <%= link_to('edit', edit_admin_arrangement_path(arrangement), class: 'edit') if can?(:edit, arrangement) %>
         </td>
       </tr>
