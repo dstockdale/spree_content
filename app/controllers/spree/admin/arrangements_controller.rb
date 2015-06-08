@@ -29,7 +29,6 @@ class Spree::Admin::ArrangementsController < Spree::Admin::BaseController
   end
 
   def destroy
-    binding.pry
     @arrangement.destroy
     redirect_to admin_arrangements_path, notice: "Removed the #{@arrangement.context}"
   end
