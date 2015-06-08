@@ -19,10 +19,28 @@
     <tbody>
     <% @arrangements.each do |arrangement| %>
       <tr <%== "style='color: red;'" if !arrangement.visible %> id="<%= spree_dom_id arrangement %>" data-hook="admin_arrangements_index_rows" class="<%= cycle('odd', 'even') %>">
-        <td><a href="<%= arrangement.link %>" target="_blank"><%= arrangement.title %> <%= arrangement.slug %></a></td>
+        <td><%= arrangement.title %> <a href="<%= arrangement.link %>" target="_blank"> <%= arrangement.slug %></a></td>
         <td class="actions actions-3 text-right" data-hook="admin_arrangement_index_row_actions">
-          <%= link_to('delete', admin_arrangement_path(arrangement), method: :delete, class: 'delete') if can?(:destroy, arrangement) %>
-          <%= link_to('edit', edit_admin_arrangement_path(arrangement), class: 'edit') if can?(:edit, arrangement) %>
+          
+          <%= link_to_with_icon('delete', nil, admin_arrangement_path(arrangement),
+                title: Spree.t(:delete),
+                data: { confirm: Spree.t(:are_you_sure), action: 'remove' }, 
+                class: "btn btn-danger btn-sm delete-resource icon-link with-tip action-delete") if can?(:destroy, arrangement) %>
+
+          <%= link_to_with_icon('edit', nil, edit_admin_arrangement_path(arrangement),
+                title: Spree.t(:edit),
+                data: { action: 'edit' }, 
+                class: "btn btn-primary btn-sm icon-link with-tip action-edit") if can?(:edit, arrangement)  %>
+
+          <%= link_to_with_icon('link', nil, arrangement.link,
+                title: Spree.t(:visit_page, scope: :contents) + ' ' + arrangement.link,
+                target: "_blank", 
+                class: "btn btn-primary btn-sm icon-link with-tip action-edit") %>
+
+          <%= link_to_with_icon('translate', nil, admin_translations_path('arrangement', arrangement.id), 
+                title: Spree.t(:'i18n.translations'), 
+                class: 'btn btn-sm btn-primary') if can?(:translate, Spree::Arrangement)  %>
+
         </td>
       </tr>
     <% end %>

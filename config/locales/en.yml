@@ -14,3 +14,4 @@ en:
       target: Where should it appear?
       body: Content
       everything: "Pages & Partials"
+      visit_page: "Visit page: "
